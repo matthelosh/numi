@@ -19,5 +19,15 @@ module.exports = function(router){
 
   });
 
+  router.get('/getUsers', function(req, res){
+    User.find({}, function(err, users){
+      if(err) throw err;
+      else{
+        console.log(users);
+        res.send(users);
+      }
+    });
+  })
+
   return router;
 }

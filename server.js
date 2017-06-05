@@ -22,10 +22,17 @@ mongoose.connect('mongodb://127.0.0.1:27017/numi', function(err){
   }
 });
 
-app.get('*', function(req, res){
-  res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+app.get('/', function(req, res){
+  res.sendFile(path.join(__dirname + '/public/app/views/slide/slidePage.html'));
 });
 
+app.get('/users', function(req, res){
+  res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+});
+app.get('*', function(req, res){
+
+  res.status(404).sendFile(path.join(__dirname + '/public/app/views/404.html'));
+});
 app.listen(port, function(){
   console.log('Running on port ' + port);
 });
